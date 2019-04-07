@@ -7,7 +7,9 @@ resource "cloudflare_zone" "domain" {
 
 # Zone settings
 resource "cloudflare_zone_settings_override" "domain" {
-  name  = "${var.domain}"
+  name = "${var.domain}"
+
+  depends_on = ["cloudflare_zone.domain"]
 
   settings {
     ssl = "full"
@@ -22,6 +24,8 @@ resource "cloudflare_zone_settings_override" "domain" {
 resource "cloudflare_record" "domain_ipv4" {
   count = "${length(var.ipv4)}"
 
+  depends_on = ["cloudflare_zone.domain"]
+
   domain  = "${var.domain}"
   name    = "${var.domain}"
   value   = "${var.ipv4[count.index]}"
@@ -33,6 +37,8 @@ resource "cloudflare_record" "domain_ipv4" {
 resource "cloudflare_record" "domain_ipv6" {
   count = "${length(var.ipv6)}"
 
+  depends_on = ["cloudflare_zone.domain"]
+
   domain  = "${var.domain}"
   name    = "${var.domain}"
   value   = "${var.ipv6[count.index]}"
@@ -42,7 +48,10 @@ resource "cloudflare_record" "domain_ipv6" {
 
 # www > naked domain
 resource "cloudflare_record" "domain_www" {
-  count   = "${length(var.ipv4)}"
+  count = "${length(var.ipv4)}"
+
+  depends_on = ["cloudflare_zone.domain"]
+
   domain  = "${var.domain}"
   name    = "www"
   value   = "${var.domain}"
@@ -52,7 +61,10 @@ resource "cloudflare_record" "domain_www" {
 
 # Other A, CNAME, MX, TXT records
 resource "cloudflare_record" "records" {
-  count    = "${length(var.records)}"
+  count = "${length(var.records)}"
+
+  depends_on = ["cloudflare_zone.domain"]
+
   domain   = "${var.domain}"
   name     = "${lookup(var.records[count.index], "name" )}"
   value    = "${lookup(var.records[count.index], "value" )}"
