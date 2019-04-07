@@ -1,8 +1,10 @@
 # Zone settings
-variable "domain" { }
+variable "domain" {}
+
 variable "zone_on" {
-    default = true
+  default = true
 }
+
 variable "plan" {
   default = "free"
 }
