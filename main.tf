@@ -1,8 +1,8 @@
 # Zone creation
 resource "cloudflare_zone" "domain" {
-   count = "${var.zone_on}"
-    zone = "${var.domain}"
-    plan = "${var.plan}"
+  count = "${var.zone_on}"
+  zone  = "${var.domain}"
+  plan  = "${var.plan}"
 }
 
 # Zone settings
@@ -12,11 +12,11 @@ resource "cloudflare_zone_settings_override" "domain" {
   depends_on = ["cloudflare_zone.domain"]
 
   settings {
-    ssl = "full"
-    always_use_https = "on"
+    ssl                      = "full"
+    always_use_https         = "on"
     automatic_https_rewrites = "on"
-    cache_level = "aggressive"
-    development_mode = "off"
+    cache_level              = "aggressive"
+    development_mode         = "off"
   }
 }
 
