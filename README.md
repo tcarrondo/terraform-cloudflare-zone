@@ -19,7 +19,7 @@ module "domain_com" {
     },
     {
       name     = "${module.domain_com.domain}"
-      value    = "main.${module.domain_com.domain}"
+      value    = "mail.${module.domain_com.domain}"
       type     = "MX"
       priority = "10"
       proxied  = false
