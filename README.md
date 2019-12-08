@@ -17,7 +17,7 @@ provider "cloudflare" {
 }
 
 module "domain_com" {
-  source = "github.com/tcarrondo/terraform-cloudflare-zone"
+  source  = "tcarrondo/zone/cloudflare"
 
   domain = "domain.com"
 
