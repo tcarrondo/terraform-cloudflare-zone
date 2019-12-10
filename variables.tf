@@ -11,18 +11,18 @@ variable "plan" {
 
 # Naked A record
 variable "ipv4" {
-  type    = "list"
+  type    = list(string)
   default = []
 }
 
 # Naked AAAA record
 variable "ipv6" {
-  type    = "list"
+  type    = list(string)
   default = []
 }
 
 # Other A, CNAME, MX, TXT records
 variable "records" {
-  type    = "list"
-  default = []
+  type    = map
+  default = {}
 }
