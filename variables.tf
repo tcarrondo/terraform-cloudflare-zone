@@ -23,6 +23,5 @@ variable "ipv6" {
 
 # Other A, CNAME, MX, TXT records
 variable "records" {
-  type    = map
   default = {}
 }
