@@ -5,3 +5,7 @@ output "domain" {
 output "ns" {
   value = "${cloudflare_zone.domain.0.name_servers}"
 }
+
+output "id" {
+  value = cloudflare_zone.domain.0.id
+}
