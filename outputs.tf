@@ -1,9 +1,9 @@
 output "domain" {
-  value = "${var.domain}"
+  value = var.domain
 }
 
 output "ns" {
-  value = "${cloudflare_zone.domain.0.name_servers}"
+  value = cloudflare_zone.domain.0.name_servers
 }
 
 output "zone_id" {
