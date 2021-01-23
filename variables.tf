@@ -1,27 +1,27 @@
 # Zone settings
-variable "domain" {}
+variable domain {}
 
-variable "zone_on" {
+variable zone_on {
   default = true
 }
 
-variable "plan" {
+variable plan {
   default = "free"
 }
 
 # Naked A record
-variable "ipv4" {
+variable ipv4 {
   type    = list(string)
   default = []
 }
 
 # Naked AAAA record
-variable "ipv6" {
+variable ipv6 {
   type    = list(string)
   default = []
 }
 
 # Other A, CNAME, MX, TXT records
-variable "records" {
+variable records {
   default = {}
 }
