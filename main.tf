@@ -61,14 +61,17 @@ resource "cloudflare_record" "domain_www" {
 
 # Other A, CNAME, MX, TXT records
 resource "cloudflare_record" "records" {
-  count = length(var.records)
 
-  depends_on = [cloudflare_zone.domain]
+  for_each = local.final_records
 
   zone_id  = cloudflare_zone.domain.0.id
-  name     = lookup(var.records[count.index], "name" )
-  value    = lookup(var.records[count.index], "value" )
-  type     = lookup(var.records[count.index], "type", "A" )
-  priority = lookup(var.records[count.index], "priority", 0)
-  proxied  = lookup(var.records[count.index], "proxied", true )
+  name     = each.value.name
+  value    = each.value.value
+  type     = each.value.type
+  priority = each.value.priority
+  proxied  = each.value.proxied
+
+  depends_on = [
+    cloudflare_zone.domain
+  ]
 }
