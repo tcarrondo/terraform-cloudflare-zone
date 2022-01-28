@@ -8,7 +8,40 @@ It creates:
 * WWW CNAME to naked;
 * all additional records provided.
 
-## Usage
+## Usage on terraform >= v1.0
+```hcl
+provider "cloudflare" {
+  email   = ""
+  api_key = ""
+  version = "~> 3.0"
+}
+
+module "domain_com" {
+  source  = "tcarrondo/zone/cloudflare"
+  version = "4.0.0"
+
+  domain = "domain.com"
+
+  ipv4 = ["1.2.3.4"]
+  ipv6 = ["2607:f0d0:1002:51::4"]
+
+  records = {
+    mail = {
+      name    = "mail"
+      value   = "1.2.3.4"
+    },
+    mx_10 = {
+      name     = "${module.domain_com.domain}"
+      value    = "mail.${module.domain_com.domain}"
+      type     = "MX"
+      priority = "10"
+      proxied  = false
+    },
+  }
+}
+```
+
+## Usage on terraform <=v0.13
 ```hcl
 provider "cloudflare" {
   email   = ""
@@ -18,6 +51,7 @@ provider "cloudflare" {
 
 module "domain_com" {
   source  = "tcarrondo/zone/cloudflare"
+  version = "3.0.0"
 
   domain = "domain.com"
 
