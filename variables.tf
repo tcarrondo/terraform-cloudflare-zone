@@ -1,27 +1,40 @@
-# Zone settings
-variable "domain" {}
+variable "account_name" {
+  description = "Cloudflare account name"
+  type        = string
+}
+
+variable "domain" {
+  description = "Zone domain name"
+  type        = string
+}
 
 variable "zone_on" {
-  default = true
+  description = "Zone creation"
+  type        = bool
+  default     = true
 }
 
 variable "plan" {
-  default = "free"
+  description = "Plan associated with the zone"
+  type        = string
+  default     = "free"
 }
 
-# Naked A record
 variable "ipv4" {
-  type    = list(string)
-  default = []
+  description = "Naked ipv4 (A) record value"
+  type        = list(string)
+  default     = []
 }
 
-# Naked AAAA record
 variable "ipv6" {
-  type    = list(string)
-  default = []
+  description = "Naked ipv6 (AAAA) record value"
+  type        = list(string)
+  default     = []
 }
 
-# Other A, CNAME, MX, TXT records
+
 variable "records" {
-  default = {}
+  description = "Other (A, CNAME, MX, TXT) records"
+  type        = map(any)
+  default     = {}
 }
