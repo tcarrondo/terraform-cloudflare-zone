@@ -35,6 +35,6 @@ variable "ipv6" {
 
 variable "records" {
   description = "Other (A, CNAME, MX, TXT) records"
-  type        = map(any)
-  default     = {}
+  type        = list(map(any))
+  default     = []
 }
