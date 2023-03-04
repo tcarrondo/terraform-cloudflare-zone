@@ -13,12 +13,12 @@ It creates:
 provider "cloudflare" {
   email   = ""
   api_key = ""
-  version = "~> 3.0"
+  version = ">= 3.32"
 }
 
 module "domain_com" {
   source  = "tcarrondo/zone/cloudflare"
-  version = "4.0.0"
+  version = "4.1.0"
 
   domain = "domain.com"
 
@@ -74,3 +74,7 @@ module "domain_com" {
   ]
 }
 ```
+
+<!-- BEGIN_TF_DOCS -->
+
+<!-- END_TF_DOCS -->
