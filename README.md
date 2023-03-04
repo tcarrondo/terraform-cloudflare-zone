@@ -114,7 +114,7 @@ No modules.
 | <a name="input_ipv4"></a> [ipv4](#input\_ipv4) | Naked ipv4 (A) record value | `list(string)` | `[]` | no |
 | <a name="input_ipv6"></a> [ipv6](#input\_ipv6) | Naked ipv6 (AAAA) record value | `list(string)` | `[]` | no |
 | <a name="input_plan"></a> [plan](#input\_plan) | Plan associated with the zone | `string` | `"free"` | no |
-| <a name="input_records"></a> [records](#input\_records) | Other (A, CNAME, MX, TXT) records | `map(any)` | `{}` | no |
+| <a name="input_records"></a> [records](#input\_records) | Other (A, CNAME, MX, TXT) records | `list(map(any))` | `[]` | no |
 | <a name="input_zone_on"></a> [zone\_on](#input\_zone\_on) | Zone creation | `bool` | `true` | no |
 
 ## Outputs
