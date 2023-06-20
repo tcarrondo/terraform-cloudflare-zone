@@ -115,6 +115,7 @@ No modules.
 | <a name="input_ipv6"></a> [ipv6](#input\_ipv6) | Naked ipv6 (AAAA) record value | `list(string)` | `[]` | no |
 | <a name="input_plan"></a> [plan](#input\_plan) | Plan associated with the zone | `string` | `"free"` | no |
 | <a name="input_records"></a> [records](#input\_records) | Other (A, CNAME, MX, TXT) records | `list(map(any))` | `[]` | no |
+| <a name="input_www_cname"></a> [www\_cname](#input\_www\_cname) | Custom www CNAME record value | `string` | `""` | no |
 | <a name="input_zone_on"></a> [zone\_on](#input\_zone\_on) | Zone creation | `bool` | `true` | no |
 
 ## Outputs
