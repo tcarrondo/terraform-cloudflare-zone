@@ -32,6 +32,11 @@ variable "ipv6" {
   default     = []
 }
 
+variable "www_cname" {
+  description = "Custom www CNAME record value"
+  type        = string
+  default     = ""
+}
 
 variable "records" {
   description = "Other (A, CNAME, MX, TXT) records"
