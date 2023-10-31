@@ -1,6 +1,7 @@
 variable "account_name" {
   description = "Cloudflare account name"
   type        = string
+  default     = ""
 }
 
 variable "domain" {
