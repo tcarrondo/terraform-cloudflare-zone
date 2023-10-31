@@ -3,7 +3,7 @@ resource "cloudflare_zone" "domain" {
   count      = var.zone_on ? 1 : 0
   zone       = var.domain
   plan       = var.plan
-  account_id = data.cloudflare_accounts.main.accounts[0].id
+  account_id = local.account_id
 }
 
 # Zone settings
