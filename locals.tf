@@ -1,5 +1,7 @@
 locals {
 
+  account_id = var.account_name == "" ? data.cloudflare_user.main[0].id : data.cloudflare_accounts.main[0].accounts[0].id
+
   # DNS records default values
   record_defaults = {
     type     = "A"
