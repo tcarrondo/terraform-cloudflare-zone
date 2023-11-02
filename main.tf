@@ -8,7 +8,7 @@ resource "cloudflare_zone" "domain" {
 
 # Zone settings
 resource "cloudflare_zone_settings_override" "domain" {
-  zone_id = cloudflare_zone.domain.0.id
+  zone_id = cloudflare_zone.domain[0].id
 
   depends_on = [cloudflare_zone.domain]
 
@@ -27,7 +27,7 @@ resource "cloudflare_record" "domain_ipv4" {
 
   depends_on = [cloudflare_zone.domain]
 
-  zone_id = cloudflare_zone.domain.0.id
+  zone_id = cloudflare_zone.domain[0].id
   name    = var.domain
   value   = var.ipv4[count.index]
   proxied = "true"
@@ -40,7 +40,7 @@ resource "cloudflare_record" "domain_ipv6" {
 
   depends_on = [cloudflare_zone.domain]
 
-  zone_id = cloudflare_zone.domain.0.id
+  zone_id = cloudflare_zone.domain[0].id
   name    = var.domain
   value   = var.ipv6[count.index]
   proxied = "true"
@@ -53,7 +53,7 @@ resource "cloudflare_record" "domain_www" {
 
   depends_on = [cloudflare_zone.domain]
 
-  zone_id = cloudflare_zone.domain.0.id
+  zone_id = cloudflare_zone.domain[0].id
   name    = "www"
   value   = var.domain
   proxied = "true"
@@ -65,7 +65,7 @@ resource "cloudflare_record" "records" {
 
   for_each = local.final_records
 
-  zone_id  = cloudflare_zone.domain.0.id
+  zone_id  = cloudflare_zone.domain[0].id
   name     = each.value.name
   value    = each.value.value
   type     = each.value.type
