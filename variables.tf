@@ -1,6 +1,7 @@
 variable "account_name" {
-  description = "Cloudflare account name"
+  description = "Cloudflare account name where the resources will be created. If not specified will use the first account, so it is recommended to be specified when your user has access to more then one account."
   type        = string
+  default     = ""
 }
 
 variable "domain" {
