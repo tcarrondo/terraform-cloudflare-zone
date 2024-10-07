@@ -75,7 +75,7 @@ No modules.
 
 | Name | Description | Type | Default | Required |
 |------|-------------|------|---------|:--------:|
-| <a name="input_account_name"></a> [account\_name](#input\_account\_name) | Cloudflare account name | `string` | n/a | yes |
+| <a name="input_account_name"></a> [account\_name](#input\_account\_name) | Cloudflare account name where the resources will be created. If not specified will use the first account, so it is recommended to be specified when your user has access to more then one account. | `string` | `""` | no |
 | <a name="input_domain"></a> [domain](#input\_domain) | Zone domain name | `string` | n/a | yes |
 | <a name="input_ipv4"></a> [ipv4](#input\_ipv4) | Naked ipv4 (A) record value | `list(string)` | `[]` | no |
 | <a name="input_ipv6"></a> [ipv6](#input\_ipv6) | Naked ipv6 (AAAA) record value | `list(string)` | `[]` | no |
