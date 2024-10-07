@@ -44,16 +44,16 @@ module "domain_com" {
 <!-- BEGIN_TF_DOCS -->
 ## Requirements
 
-| Name                                                                         | Version |
-| ---------------------------------------------------------------------------- | ------- |
-| <a name="requirement_terraform"></a> [terraform](#requirement\_terraform)    | ~> 1    |
-| <a name="requirement_cloudflare"></a> [cloudflare](#requirement\_cloudflare) | ~> 4    |
+| Name | Version |
+|------|---------|
+| <a name="requirement_terraform"></a> [terraform](#requirement\_terraform) | ~> 1 |
+| <a name="requirement_cloudflare"></a> [cloudflare](#requirement\_cloudflare) | ~> 4 |
 
 ## Providers
 
-| Name                                                                   | Version |
-| ---------------------------------------------------------------------- | ------- |
-| <a name="provider_cloudflare"></a> [cloudflare](#provider\_cloudflare) | ~> 4    |
+| Name | Version |
+|------|---------|
+| <a name="provider_cloudflare"></a> [cloudflare](#provider\_cloudflare) | ~> 4 |
 
 ## Modules
 
@@ -61,34 +61,34 @@ No modules.
 
 ## Resources
 
-| Name                                                                                                                                                   | Type        |
-| ------------------------------------------------------------------------------------------------------------------------------------------------------ | ----------- |
-| [cloudflare_record.domain_ipv4](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/record)                            | resource    |
-| [cloudflare_record.domain_ipv6](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/record)                            | resource    |
-| [cloudflare_record.domain_www](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/record)                             | resource    |
-| [cloudflare_record.records](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/record)                                | resource    |
-| [cloudflare_zone.domain](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/zone)                                     | resource    |
-| [cloudflare_zone_settings_override.domain](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/zone_settings_override) | resource    |
-| [cloudflare_accounts.main](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/data-sources/accounts)                            | data source |
+| Name | Type |
+|------|------|
+| [cloudflare_record.domain_ipv4](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/record) | resource |
+| [cloudflare_record.domain_ipv6](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/record) | resource |
+| [cloudflare_record.domain_www](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/record) | resource |
+| [cloudflare_record.records](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/record) | resource |
+| [cloudflare_zone.domain](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/zone) | resource |
+| [cloudflare_zone_settings_override.domain](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/zone_settings_override) | resource |
+| [cloudflare_accounts.main](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/data-sources/accounts) | data source |
 
 ## Inputs
 
-| Name                                                                     | Description                                                                                                                                                                                        | Type             | Default  | Required |
-| ------------------------------------------------------------------------ | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------- | -------- | :------: |
-| <a name="input_account_name"></a> [account\_name](#input\_account\_name) | Cloudflare account name where the resources will be created. If not specified will use the first account, so it is recommended to be specified when your user has access to more then one account. | `string`         | `""`     |    no    |
-| <a name="input_domain"></a> [domain](#input\_domain)                     | Zone domain name                                                                                                                                                                                   | `string`         | n/a      |   yes    |
-| <a name="input_ipv4"></a> [ipv4](#input\_ipv4)                           | Naked ipv4 (A) record value                                                                                                                                                                        | `list(string)`   | `[]`     |    no    |
-| <a name="input_ipv6"></a> [ipv6](#input\_ipv6)                           | Naked ipv6 (AAAA) record value                                                                                                                                                                     | `list(string)`   | `[]`     |    no    |
-| <a name="input_plan"></a> [plan](#input\_plan)                           | Plan associated with the zone                                                                                                                                                                      | `string`         | `"free"` |    no    |
-| <a name="input_records"></a> [records](#input\_records)                  | Other (A, CNAME, MX, TXT) records                                                                                                                                                                  | `list(map(any))` | `[]`     |    no    |
-| <a name="input_www_cname"></a> [www\_cname](#input\_www\_cname)          | Custom www CNAME record value                                                                                                                                                                      | `string`         | `""`     |    no    |
-| <a name="input_zone_on"></a> [zone\_on](#input\_zone\_on)                | Zone creation                                                                                                                                                                                      | `bool`           | `true`   |    no    |
+| Name | Description | Type | Default | Required |
+|------|-------------|------|---------|:--------:|
+| <a name="input_account_name"></a> [account\_name](#input\_account\_name) | Cloudflare account name where the resources will be created. If not specified will use the first account, so it is recommended to be specified when your user has access to more then one account. | `string` | `""` | no |
+| <a name="input_domain"></a> [domain](#input\_domain) | Zone domain name | `string` | n/a | yes |
+| <a name="input_ipv4"></a> [ipv4](#input\_ipv4) | Naked ipv4 (A) record value | `list(string)` | `[]` | no |
+| <a name="input_ipv6"></a> [ipv6](#input\_ipv6) | Naked ipv6 (AAAA) record value | `list(string)` | `[]` | no |
+| <a name="input_plan"></a> [plan](#input\_plan) | Plan associated with the zone | `string` | `"free"` | no |
+| <a name="input_records"></a> [records](#input\_records) | Other (A, CNAME, MX, TXT) records | `list(map(any))` | `[]` | no |
+| <a name="input_www_cname"></a> [www\_cname](#input\_www\_cname) | Custom www CNAME record value | `string` | `""` | no |
+| <a name="input_zone_on"></a> [zone\_on](#input\_zone\_on) | Zone creation | `bool` | `true` | no |
 
 ## Outputs
 
-| Name                                                        | Description      |
-| ----------------------------------------------------------- | ---------------- |
-| <a name="output_domain"></a> [domain](#output\_domain)      | Zone domain name |
-| <a name="output_ns"></a> [ns](#output\_ns)                  | Zone nameservers |
-| <a name="output_zone_id"></a> [zone\_id](#output\_zone\_id) | Zone ID          |
+| Name | Description |
+|------|-------------|
+| <a name="output_domain"></a> [domain](#output\_domain) | Zone domain name |
+| <a name="output_ns"></a> [ns](#output\_ns) | Zone nameservers |
+| <a name="output_zone_id"></a> [zone\_id](#output\_zone\_id) | Zone ID |
 <!-- END_TF_DOCS -->
