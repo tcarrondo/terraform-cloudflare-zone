@@ -29,7 +29,7 @@ resource "cloudflare_record" "domain_ipv4" {
 
   zone_id = cloudflare_zone.domain[0].id
   name    = var.domain
-  content   = var.ipv4[count.index]
+  content = var.ipv4[count.index]
   proxied = "true"
   type    = "A"
 }
@@ -42,7 +42,7 @@ resource "cloudflare_record" "domain_ipv6" {
 
   zone_id = cloudflare_zone.domain[0].id
   name    = var.domain
-  content  = var.ipv6[count.index]
+  content = var.ipv6[count.index]
   proxied = "true"
   type    = "AAAA"
 }
@@ -55,7 +55,7 @@ resource "cloudflare_record" "domain_www" {
 
   zone_id = cloudflare_zone.domain[0].id
   name    = "www"
-  content  = var.www_cname == "" ? var.domain : var.www_cname
+  content = var.www_cname == "" ? var.domain : var.www_cname
   proxied = "true"
   type    = "CNAME"
 }
@@ -67,7 +67,7 @@ resource "cloudflare_record" "records" {
 
   zone_id  = cloudflare_zone.domain[0].id
   name     = each.value.name
-  content   = each.value.value
+  content  = each.value.value
   type     = each.value.type
   priority = each.value.priority
   proxied  = each.value.proxied
