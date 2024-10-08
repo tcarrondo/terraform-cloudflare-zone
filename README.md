@@ -8,50 +8,17 @@ It creates:
 * WWW CNAME to naked;
 * all additional records provided.
 
-## Usage on terraform >= v1.0
+## Usage
 ```hcl
 provider "cloudflare" {
   email   = ""
   api_key = ""
-  version = ">= 3.32"
+  version = "~> 4"
 }
 
 module "domain_com" {
   source  = "tcarrondo/zone/cloudflare"
-  version = "4.1.0"
-
-  domain = "domain.com"
-
-  ipv4 = ["1.2.3.4"]
-  ipv6 = ["2607:f0d0:1002:51::4"]
-
-  records = {
-    mail = {
-      name    = "mail"
-      value   = "1.2.3.4"
-    },
-    mx_10 = {
-      name     = "${module.domain_com.domain}"
-      value    = "mail.${module.domain_com.domain}"
-      type     = "MX"
-      priority = "10"
-      proxied  = false
-    },
-  }
-}
-```
-
-## Usage on terraform <=v0.13
-```hcl
-provider "cloudflare" {
-  email   = ""
-  api_key = ""
-  version = "~> 2.2"
-}
-
-module "domain_com" {
-  source  = "tcarrondo/zone/cloudflare"
-  version = "3.0.0"
+  version = "~> 4"
 
   domain = "domain.com"
 
@@ -62,7 +29,6 @@ module "domain_com" {
     {
       name    = "mail"
       value   = "1.2.3.4"
-      type    = "A"
     },
     {
       name     = "${module.domain_com.domain}"
@@ -70,7 +36,7 @@ module "domain_com" {
       type     = "MX"
       priority = "10"
       proxied  = false
-    },
+    }
   ]
 }
 ```
@@ -80,14 +46,14 @@ module "domain_com" {
 
 | Name | Version |
 |------|---------|
-| <a name="requirement_terraform"></a> [terraform](#requirement\_terraform) | >= 1.0 |
-| <a name="requirement_cloudflare"></a> [cloudflare](#requirement\_cloudflare) | >= 3.32 |
+| <a name="requirement_terraform"></a> [terraform](#requirement\_terraform) | ~> 1 |
+| <a name="requirement_cloudflare"></a> [cloudflare](#requirement\_cloudflare) | ~> 4 |
 
 ## Providers
 
 | Name | Version |
 |------|---------|
-| <a name="provider_cloudflare"></a> [cloudflare](#provider\_cloudflare) | >= 3.32 |
+| <a name="provider_cloudflare"></a> [cloudflare](#provider\_cloudflare) | ~> 4 |
 
 ## Modules
 
@@ -109,12 +75,13 @@ No modules.
 
 | Name | Description | Type | Default | Required |
 |------|-------------|------|---------|:--------:|
-| <a name="input_account_name"></a> [account\_name](#input\_account\_name) | Cloudflare account name | `string` | n/a | yes |
+| <a name="input_account_name"></a> [account\_name](#input\_account\_name) | Cloudflare account name where the resources will be created. If not specified will use the first account, so it is recommended to be specified when your user has access to more then one account. | `string` | `""` | no |
 | <a name="input_domain"></a> [domain](#input\_domain) | Zone domain name | `string` | n/a | yes |
 | <a name="input_ipv4"></a> [ipv4](#input\_ipv4) | Naked ipv4 (A) record value | `list(string)` | `[]` | no |
 | <a name="input_ipv6"></a> [ipv6](#input\_ipv6) | Naked ipv6 (AAAA) record value | `list(string)` | `[]` | no |
 | <a name="input_plan"></a> [plan](#input\_plan) | Plan associated with the zone | `string` | `"free"` | no |
 | <a name="input_records"></a> [records](#input\_records) | Other (A, CNAME, MX, TXT) records | `list(map(any))` | `[]` | no |
+| <a name="input_www_cname"></a> [www\_cname](#input\_www\_cname) | Custom www CNAME record value | `string` | `""` | no |
 | <a name="input_zone_on"></a> [zone\_on](#input\_zone\_on) | Zone creation | `bool` | `true` | no |
 
 ## Outputs

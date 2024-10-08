@@ -8,8 +8,8 @@ locals {
   }
 
   # completed DNS records with (sort of) magic
-  final_records = { for k, v in var.records :
-    k => merge(local.record_defaults, v)
+  final_records = { for record in var.records :
+    "${record.name}_${record.type}" => merge(local.record_defaults, record)
   }
 
 }
