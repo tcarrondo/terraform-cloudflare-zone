@@ -3,7 +3,7 @@ locals {
   # DNS records default values
   record_defaults = {
     type     = "A"
-    priority = "0"
+    priority = null
     proxied  = true
   }
 
