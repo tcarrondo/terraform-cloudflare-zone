@@ -15,12 +15,6 @@ variable "zone_on" {
   default     = true
 }
 
-variable "plan" {
-  description = "Plan associated with the zone"
-  type        = string
-  default     = "free"
-}
-
 variable "ipv4" {
   description = "Naked ipv4 (A) record value"
   type        = list(string)
