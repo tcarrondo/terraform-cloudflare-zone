@@ -1,3 +1,5 @@
-data "cloudflare_accounts" "main" {
-  name = var.account_name
+data "cloudflare_account" "main" {
+  filter = {
+    name = var.account_name
+  }
 }
