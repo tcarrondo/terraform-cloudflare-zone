@@ -89,7 +89,7 @@ resource "cloudflare_dns_record" "records" {
   for_each = local.final_records
 
   zone_id  = cloudflare_zone.domain[0].id
-  name     = "${each.value.name}.${var.domain}"
+  name     = each.value.name == var.domain ? each.value.name : "${each.value.name}.${var.domain}"
   content  = each.value.value
   type     = each.value.type
   priority = each.value.priority
