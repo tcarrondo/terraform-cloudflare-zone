@@ -38,3 +38,9 @@ variable "records" {
   type        = list(map(any))
   default     = []
 }
+
+variable "domain_alias" {
+  description = "Domain alias"
+  type        = list(string)
+  default     = []
+}
