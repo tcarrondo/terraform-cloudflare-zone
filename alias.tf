@@ -1,4 +1,5 @@
 # Zone creation
+
 resource "cloudflare_zone" "alias" {
   for_each = toset(var.domain_alias)
   name     = each.key
@@ -38,6 +39,7 @@ resource "cloudflare_zone_setting" "alias" {
 }
 
 # Naked A record
+
 resource "cloudflare_dns_record" "alias_ipv4" {
   for_each = toset(var.domain_alias)
 
@@ -54,6 +56,7 @@ resource "cloudflare_dns_record" "alias_ipv4" {
 }
 
 # * record
+
 resource "cloudflare_dns_record" "alias_wildcard" {
   for_each = toset(var.domain_alias)
 
@@ -69,6 +72,8 @@ resource "cloudflare_dns_record" "alias_wildcard" {
   ]
 }
 
+# Redirect ruleset
+
 resource "cloudflare_ruleset" "redirect" {
   for_each = toset(var.domain_alias)
 
@@ -78,14 +83,14 @@ resource "cloudflare_ruleset" "redirect" {
   kind    = "zone"
 
   rules = [{
-    description = "Redirect to ${cloudflare_zone.domain[0].name}"
+    description = "Redirect to ${var.domain}"
     expression  = true
     action      = "redirect"
     action_parameters = {
       from_value = {
         status_code = 301
         target_url = {
-          expression = "concat(\"https://${cloudflare_zone.domain[0].name}\", http.request.uri.path)"
+          expression = "concat(\"https://${var.domain}\", http.request.uri.path)"
         }
         preserve_query_string = true
       }
