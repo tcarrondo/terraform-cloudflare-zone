@@ -63,11 +63,16 @@ No modules.
 
 | Name | Type |
 |------|------|
+| [cloudflare_dns_record.alias_ipv4](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/dns_record) | resource |
+| [cloudflare_dns_record.alias_wildcard](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/dns_record) | resource |
 | [cloudflare_dns_record.domain_ipv4](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/dns_record) | resource |
 | [cloudflare_dns_record.domain_ipv6](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/dns_record) | resource |
 | [cloudflare_dns_record.domain_www](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/dns_record) | resource |
 | [cloudflare_dns_record.records](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/dns_record) | resource |
+| [cloudflare_ruleset.redirect](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/ruleset) | resource |
+| [cloudflare_zone.alias](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/zone) | resource |
 | [cloudflare_zone.domain](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/zone) | resource |
+| [cloudflare_zone_setting.alias](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/zone_setting) | resource |
 | [cloudflare_zone_setting.all](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/zone_setting) | resource |
 | [cloudflare_account.main](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/data-sources/account) | data source |
 
@@ -77,6 +82,7 @@ No modules.
 |------|-------------|------|---------|:--------:|
 | <a name="input_account_name"></a> [account\_name](#input\_account\_name) | Cloudflare account name where the resources will be created. If not specified will use the first account, so it is recommended to be specified when your user has access to more then one account. | `string` | `""` | no |
 | <a name="input_domain"></a> [domain](#input\_domain) | Zone domain name | `string` | n/a | yes |
+| <a name="input_domain_alias"></a> [domain\_alias](#input\_domain\_alias) | Domain alias | `list(string)` | `[]` | no |
 | <a name="input_ipv4"></a> [ipv4](#input\_ipv4) | Naked ipv4 (A) record value | `list(string)` | `[]` | no |
 | <a name="input_ipv6"></a> [ipv6](#input\_ipv6) | Naked ipv6 (AAAA) record value | `list(string)` | `[]` | no |
 | <a name="input_records"></a> [records](#input\_records) | Other (A, CNAME, MX, TXT) records | `list(map(any))` | `[]` | no |
@@ -87,6 +93,8 @@ No modules.
 
 | Name | Description |
 |------|-------------|
+| <a name="output_"></a> [](#output\_) | n/a |
 | <a name="output_account"></a> [account](#output\_account) | Account |
+| <a name="output_alias_zones"></a> [alias\_zones](#output\_alias\_zones) | Zone |
 | <a name="output_zone"></a> [zone](#output\_zone) | Zone |
 <!-- END_TF_DOCS -->
