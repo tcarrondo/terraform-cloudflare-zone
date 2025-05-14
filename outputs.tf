@@ -13,7 +13,7 @@ output "alias_zones" {
   value       = cloudflare_zone.alias
 }
 
-output "" {
+output "all_name_servers" {
   value = merge(
     length(cloudflare_zone.domain) > 0 ? {
       (cloudflare_zone.domain[0].name) = cloudflare_zone.domain[0].name_servers
