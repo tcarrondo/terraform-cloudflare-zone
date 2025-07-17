@@ -30,7 +30,6 @@ resource "cloudflare_zone_setting" "alias" {
 
   zone_id    = cloudflare_zone.alias[each.value.domain].id
   setting_id = each.value.setting_id
-  id         = each.value.setting_id
   value      = each.value.value
 
   depends_on = [
