@@ -24,7 +24,6 @@ resource "cloudflare_zone_setting" "all" {
 
   zone_id    = cloudflare_zone.domain[0].id
   setting_id = each.key
-  id         = each.key
   value      = each.value
 
   depends_on = [
