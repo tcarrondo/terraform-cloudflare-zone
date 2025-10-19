@@ -7,9 +7,17 @@ locals {
     proxied  = true
   }
 
-  # completed DNS records with (sort of) magic
-  final_records = { for record in var.records :
-    "${record.name}_${record.type}" => merge(local.record_defaults, record)
+  # Use ... to group duplicates (creates list of records)
+  grouped_records = { for record in var.records :
+    "${record.name}_${record.type}" => merge(local.record_defaults, record)...
   }
+
+  # Flatten to create individual records
+  final_records = merge([
+    for key, records in local.grouped_records : {
+      for idx, record in records :
+      "${key}_${idx}" => record
+    }
+  ]...)
 
 }
