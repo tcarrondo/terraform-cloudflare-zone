@@ -48,6 +48,7 @@ module "domain_com" {
 |------|---------|
 | <a name="requirement_terraform"></a> [terraform](#requirement\_terraform) | ~> 1 |
 | <a name="requirement_cloudflare"></a> [cloudflare](#requirement\_cloudflare) | ~> 5 |
+| <a name="requirement_punycode"></a> [punycode](#requirement\_punycode) | 0.0.2 |
 
 ## Providers
 
