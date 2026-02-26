@@ -37,7 +37,7 @@ resource "cloudflare_dns_record" "domain_ipv4" {
 
 
   zone_id = cloudflare_zone.domain[0].id
-  name    = var.domain
+  name    = local.domain_punycode
   content = var.ipv4[count.index]
   proxied = "true"
   type    = "A"
@@ -54,7 +54,7 @@ resource "cloudflare_dns_record" "domain_ipv6" {
 
 
   zone_id = cloudflare_zone.domain[0].id
-  name    = var.domain
+  name    = local.domain_punycode
   content = var.ipv6[count.index]
   proxied = "true"
   type    = "AAAA"
@@ -71,8 +71,8 @@ resource "cloudflare_dns_record" "domain_www" {
 
 
   zone_id = cloudflare_zone.domain[0].id
-  name    = "www.${var.domain}"
-  content = var.www_cname == "" ? var.domain : var.www_cname
+  name    = "www.${local.domain_punycode}"
+  content = var.www_cname == "" ? local.domain_punycode : var.www_cname
   proxied = "true"
   type    = "CNAME"
   ttl     = 1
@@ -88,7 +88,7 @@ resource "cloudflare_dns_record" "records" {
   for_each = local.final_records
 
   zone_id  = cloudflare_zone.domain[0].id
-  name     = each.value.name == var.domain ? each.value.name : "${each.value.name}.${var.domain}"
+  name     = each.value.name == var.domain ? local.domain_punycode : "${each.value.name}.${local.domain_punycode}"
   content  = each.value.value
   type     = each.value.type
   priority = each.value.priority

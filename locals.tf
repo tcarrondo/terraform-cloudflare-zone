@@ -1,5 +1,13 @@
 locals {
 
+
+  domain_punycode = provider::punycode::encode(var.domain)
+
+  domain_alias_punycode = {
+    for d in var.domain_alias :
+    d => provider::punycode::encode(d)
+  }
+
   # DNS records default values
   record_defaults = {
     type     = "A"
