@@ -43,7 +43,7 @@ resource "cloudflare_dns_record" "alias_ipv4" {
   for_each = toset(var.domain_alias)
 
   zone_id = cloudflare_zone.alias[each.key].id
-  name    = each.key
+  name    = local.domain_alias_punycode[each.key]
   content = var.ipv4[0]
   proxied = "true"
   type    = "A"
@@ -60,7 +60,7 @@ resource "cloudflare_dns_record" "alias_wildcard" {
   for_each = toset(var.domain_alias)
 
   zone_id = cloudflare_zone.alias[each.key].id
-  name    = "*.${each.key}"
+  name    = "*.${local.domain_alias_punycode[each.key]}"
   content = var.ipv4[0]
   proxied = "true"
   type    = "A"
