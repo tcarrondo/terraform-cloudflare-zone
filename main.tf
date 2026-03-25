@@ -20,7 +20,7 @@ locals {
 }
 
 resource "cloudflare_zone_setting" "all" {
-  for_each = local.zone_settings
+  for_each = var.zone_on ? local.zone_settings : {}
 
   zone_id    = cloudflare_zone.domain[0].id
   setting_id = each.key
@@ -33,8 +33,7 @@ resource "cloudflare_zone_setting" "all" {
 
 # Naked A record
 resource "cloudflare_dns_record" "domain_ipv4" {
-  count = length(var.ipv4)
-
+  count = var.zone_on ? length(var.ipv4) : 0
 
   zone_id = cloudflare_zone.domain[0].id
   name    = local.domain_punycode
@@ -50,8 +49,7 @@ resource "cloudflare_dns_record" "domain_ipv4" {
 
 # Naked AAAA record
 resource "cloudflare_dns_record" "domain_ipv6" {
-  count = length(var.ipv6)
-
+  count = var.zone_on ? length(var.ipv6) : 0
 
   zone_id = cloudflare_zone.domain[0].id
   name    = local.domain_punycode
@@ -67,8 +65,7 @@ resource "cloudflare_dns_record" "domain_ipv6" {
 
 # www > naked domain
 resource "cloudflare_dns_record" "domain_www" {
-  count = length(var.ipv4)
-
+  count = var.zone_on ? length(var.ipv4) : 0
 
   zone_id = cloudflare_zone.domain[0].id
   name    = "www.${local.domain_punycode}"
