@@ -44,9 +44,9 @@ resource "cloudflare_dns_record" "alias_ipv4" {
 
   zone_id = cloudflare_zone.alias[each.key].id
   name    = local.domain_alias_punycode[each.key]
-  content = var.ipv4[0]
+  content = var.domain
   proxied = "true"
-  type    = "A"
+  type    = "CNAME"
   ttl     = 1
 
   depends_on = [
@@ -61,9 +61,9 @@ resource "cloudflare_dns_record" "alias_wildcard" {
 
   zone_id = cloudflare_zone.alias[each.key].id
   name    = "*.${local.domain_alias_punycode[each.key]}"
-  content = var.ipv4[0]
+  content = var.domain
   proxied = "true"
-  type    = "A"
+  type    = "CNAME"
   ttl     = 1
 
   depends_on = [
