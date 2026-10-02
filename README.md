@@ -7,6 +7,7 @@ It creates:
 * Naked AAAA record, if provided;
 * WWW CNAME to naked;
 * all additional records provided.
+* SRV records, if provided (`srv_records`).
 
 ## Usage
 ```hcl
