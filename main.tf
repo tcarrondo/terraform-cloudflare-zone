@@ -96,3 +96,26 @@ resource "cloudflare_dns_record" "records" {
     cloudflare_zone.domain
   ]
 }
+
+# SRV records (the generic records above have no "data" block)
+resource "cloudflare_dns_record" "srv" {
+  for_each = var.zone_on ? { for r in var.srv_records : "${r.name}_${r.target}_${r.port}" => r } : {}
+
+  zone_id  = cloudflare_zone.domain[0].id
+  name     = each.value.name == var.domain ? local.domain_punycode : "${each.value.name}.${local.domain_punycode}"
+  type     = "SRV"
+  priority = each.value.priority
+  proxied  = false
+  ttl      = 1
+
+  data = {
+    priority = each.value.priority
+    weight   = each.value.weight
+    port     = each.value.port
+    target   = each.value.target
+  }
+
+  depends_on = [
+    cloudflare_zone.domain
+  ]
+}

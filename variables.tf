@@ -45,6 +45,18 @@ variable "records" {
   default     = []
 }
 
+variable "srv_records" {
+  description = "SRV records. name is relative to the zone (e.g. \"_autodiscover._tcp\"), or the zone name itself for the apex. They are always DNS-only."
+  type = list(object({
+    name     = string
+    priority = number
+    weight   = number
+    port     = number
+    target   = string
+  }))
+  default = []
+}
+
 variable "domain_alias" {
   description = "Domain alias"
   type        = list(string)
