@@ -100,7 +100,7 @@ No modules.
 | Name | Description |
 |------|-------------|
 | <a name="output_account"></a> [account](#output\_account) | Account |
-| <a name="output_alias_zones"></a> [alias\_zones](#output\_alias\_zones) | Zone |
+| <a name="output_alias_zones"></a> [alias\_zones](#output\_alias\_zones) | Alias zones, keyed by domain (same attributes as zone) |
 | <a name="output_all_name_servers"></a> [all\_name\_servers](#output\_all\_name\_servers) | n/a |
-| <a name="output_zone"></a> [zone](#output\_zone) | Zone |
+| <a name="output_zone"></a> [zone](#output\_zone) | Zone (a list with one element, or empty when zone\_on is false) |
 <!-- END_TF_DOCS -->
