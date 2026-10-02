@@ -6,6 +6,7 @@ It creates:
 * Naked A record, if provided;
 * Naked AAAA record, if provided;
 * WWW CNAME to naked;
+  (these three are proxied by default; set `naked_proxied = false` for DNS-only)
 * all additional records provided.
 
 ## Usage

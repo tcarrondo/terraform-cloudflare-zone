@@ -27,6 +27,12 @@ variable "ipv6" {
   default     = []
 }
 
+variable "naked_proxied" {
+  description = "Whether the naked A/AAAA records and the www CNAME go through the Cloudflare proxy. Set to false for DNS-only, e.g. when the origin serves ports the proxy doesn't support."
+  type        = bool
+  default     = true
+}
+
 variable "www_cname" {
   description = "Custom www CNAME record value"
   type        = string

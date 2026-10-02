@@ -38,7 +38,7 @@ resource "cloudflare_dns_record" "domain_ipv4" {
   zone_id = cloudflare_zone.domain[0].id
   name    = local.domain_punycode
   content = var.ipv4[count.index]
-  proxied = "true"
+  proxied = var.naked_proxied
   type    = "A"
   ttl     = 1
 
@@ -54,7 +54,7 @@ resource "cloudflare_dns_record" "domain_ipv6" {
   zone_id = cloudflare_zone.domain[0].id
   name    = local.domain_punycode
   content = var.ipv6[count.index]
-  proxied = "true"
+  proxied = var.naked_proxied
   type    = "AAAA"
   ttl     = 1
 
@@ -70,7 +70,7 @@ resource "cloudflare_dns_record" "domain_www" {
   zone_id = cloudflare_zone.domain[0].id
   name    = "www.${local.domain_punycode}"
   content = var.www_cname == "" ? local.domain_punycode : var.www_cname
-  proxied = "true"
+  proxied = var.naked_proxied
   type    = "CNAME"
   ttl     = 1
 
