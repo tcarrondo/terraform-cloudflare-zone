@@ -87,6 +87,7 @@ No modules.
 | <a name="input_domain_alias"></a> [domain\_alias](#input\_domain\_alias) | Domain alias | `list(string)` | `[]` | no |
 | <a name="input_ipv4"></a> [ipv4](#input\_ipv4) | Naked ipv4 (A) record value | `list(string)` | `[]` | no |
 | <a name="input_ipv6"></a> [ipv6](#input\_ipv6) | Naked ipv6 (AAAA) record value | `list(string)` | `[]` | no |
+| <a name="input_naked_proxied"></a> [naked\_proxied](#input\_naked\_proxied) | Whether the naked A/AAAA records and the www CNAME go through the Cloudflare proxy. Set to false for DNS-only, e.g. when the origin serves ports the proxy doesn't support. | `bool` | `true` | no |
 | <a name="input_records"></a> [records](#input\_records) | Other (A, CNAME, MX, TXT) records | `list(map(any))` | `[]` | no |
 | <a name="input_www_cname"></a> [www\_cname](#input\_www\_cname) | Custom www CNAME record value | `string` | `""` | no |
 | <a name="input_zone_on"></a> [zone\_on](#input\_zone\_on) | Zone creation | `bool` | `true` | no |
