@@ -44,7 +44,9 @@ resource "cloudflare_dns_record" "alias_ipv4" {
 
   zone_id = cloudflare_zone.alias[each.key].id
   name    = local.domain_alias_punycode[each.key]
-  content = var.domain
+  # Punycode, as in the record name: Cloudflare stores the target in ASCII,
+  # so an IDN target written as unicode shows up as a change on every plan.
+  content = local.domain_punycode
   proxied = "true"
   type    = "CNAME"
   ttl     = 1
@@ -61,7 +63,9 @@ resource "cloudflare_dns_record" "alias_wildcard" {
 
   zone_id = cloudflare_zone.alias[each.key].id
   name    = "*.${local.domain_alias_punycode[each.key]}"
-  content = var.domain
+  # Punycode, as in the record name: Cloudflare stores the target in ASCII,
+  # so an IDN target written as unicode shows up as a change on every plan.
+  content = local.domain_punycode
   proxied = "true"
   type    = "CNAME"
   ttl     = 1
